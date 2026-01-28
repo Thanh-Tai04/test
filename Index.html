@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE - Thương Mại Hiện Đại</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">LUXE</div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-page="home">Trang Chủ</a>
+                <a href="#products" class="nav-link" data-page="products">Sản Phẩm</a>
+                <a href="#cart" class="nav-link cart-link" data-page="cart">
+                    Giỏ Hàng
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#home" class="mobile-nav-link" data-page="home">Trang Chủ</a>
+        <a href="#products" class="mobile-nav-link" data-page="products">Sản Phẩm</a>
+        <a href="#cart" class="mobile-nav-link" data-page="cart">Giỏ Hàng</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <!-- Hero Banner -->
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Khám Phá<br>Phong Cách<br>Của Bạn</h1>
+                    <p class="hero-subtitle">Bộ sưu tập thời trang cao cấp dành cho người hiện đại</p>
+                    <button class="btn-primary" onclick="navigateTo('products')">Khám Phá Ngay</button>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="container">
+                <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+                <div class="products-grid" id="featured-products"></div>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">✓</div>
+                            <h3>Chất Lượng Cao</h3>
+                            <p>Sản phẩm được tuyển chọn kỹ lượng</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Giao Hàng Nhanh</h3>
+                            <p>Miễn phí giao hàng toàn quốc</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">♥</div>
+                            <h3>Hỗ Trợ 24/7</h3>
+                            <p>Luôn sẵn sàng hỗ trợ khách hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Page -->
+        <section id="products-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Tất Cả Sản Phẩm</h1>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">Tất Cả</button>
+                        <button class="filter-btn" data-category="ao">Áo</button>
+                        <button class="filter-btn" data-category="quan">Quần</button>
+                        <button class="filter-btn" data-category="phu-kien">Phụ Kiện</button>
+                    </div>
+                </div>
+                <div class="products-grid" id="all-products"></div>
+            </div>
+        </section>
+
+        <!-- Product Detail Page -->
+        <section id="product-detail-page" class="page">
+            <div class="container">
+                <button class="btn-back" onclick="navigateTo('products')">← Quay Lại</button>
+                <div class="product-detail" id="product-detail-content"></div>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section id="cart-page" class="page">
+            <div class="container">
+                <h1 class="page-title">Giỏ Hàng Của Bạn</h1>
+                <div class="cart-container">
+                    <div class="cart-items" id="cart-items">
+                        <div class="empty-cart">
+                            <p>Giỏ hàng của bạn đang trống</p>
+                            <button class="btn-primary" onclick="navigateTo('products')">Tiếp Tục Mua Sắm</button>
+                        </div>
+                    </div>
+                    <div class="cart-summary" id="cart-summary">
+                        <h3>Tóm Tắt Đơn Hàng</h3>
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span id="subtotal">0₫</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển:</span>
+                            <span id="shipping">Miễn phí</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Tổng cộng:</span>
+                            <span id="total">0₫</span>
+                        </div>
+                        <button class="btn-primary btn-checkout" onclick="navigateTo('checkout')">Thanh Toán</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Page -->
+        <section id="checkout-page" class="page">
+            <div class="container">
+                <button class="btn-back" onclick="navigateTo('cart')">← Quay Lại Giỏ Hàng</button>
+                <h1 class="page-title">Thanh Toán</h1>
+                <div class="checkout-container">
+                    <div class="checkout-form">
+                        <h3>Thông Tin Giao Hàng</h3>
+                        <form id="checkout-form">
+                            <div class="form-group">
+                                <label>Họ và tên *</label>
+                                <input type="text" required placeholder="Nguyễn Văn A">
+                            </div>
+                            <div class="form-group">
+                                <label>Số điện thoại *</label>
+                                <input type="tel" required placeholder="0123456789">
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" required placeholder="email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Địa chỉ *</label>
+                                <textarea required placeholder="Số nhà, tên đường..."></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Tỉnh/Thành phố *</label>
+                                    <input type="text" required placeholder="Hồ Chí Minh">
+                                </div>
+                                <div class="form-group">
+                                    <label>Quận/Huyện *</label>
+                                    <input type="text" required placeholder="Quận 1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Ghi chú</label>
+                                <textarea placeholder="Ghi chú về đơn hàng (tùy chọn)"></textarea>
+                            </div>
+                            <h3>Phương Thức Thanh Toán</h3>
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="cod" checked>
+                                    <span>Thanh toán khi nhận hàng (COD)</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="bank">
+                                    <span>Chuyển khoản ngân hàng</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="card">
+                                    <span>Thẻ tín dụng/ghi nợ</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-primary">Hoàn Tất Đặt Hàng</button>
+                        </form>
+                    </div>
+                    <div class="checkout-summary">
+                        <h3>Đơn Hàng Của Bạn</h3>
+                        <div id="checkout-items"></div>
+                        <div class="summary-row">
+                            <span>Tạm tính:</span>
+                            <span id="checkout-subtotal">0₫</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển:</span>
+                            <span>Miễn phí</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Tổng cộng:</span>
+                            <span id="checkout-total">0₫</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Success Modal -->
+        <div class="modal" id="success-modal">
+            <div class="modal-content">
+                <div class="success-icon">✓</div>
+                <h2>Đặt Hàng Thành Công!</h2>
+                <p>Cảm ơn bạn đã mua sắm tại LUXE. Chúng tôi sẽ liên hệ với bạn sớm nhất.</p>
+                <button class="btn-primary" onclick="closeSuccessModal()">Tiếp Tục Mua Sắm</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-logo">LUXE</h3>
+                    <p>Thương hiệu thời trang cao cấp<br>dành cho người hiện đại</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Về Chúng Tôi</h4>
+                    <a href="#">Giới thiệu</a>
+                    <a href="#">Tuyển dụng</a>
+                    <a href="#">Tin tức</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Chính Sách</h4>
+                    <a href="#">Chính sách đổi trả</a>
+                    <a href="#">Chính sách bảo mật</a>
+                    <a href="#">Điều khoản sử dụng</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Liên Hệ</h4>
+                    <a href="#">Email: hello@luxe.vn</a>
+                    <a href="#">Hotline: 1900 1234</a>
+                    <a href="#">Địa chỉ: TP. Hồ Chí Minh</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LUXE. Thiết kế bởi Frontend Developer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
